@@ -1,5 +1,5 @@
 ---
-
+const pageTitle = "About me"
 ---
 
 <html lang="en">
@@ -8,11 +8,12 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro - About</title>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
-		<h1>Reinaldo Henrique</h1>
-        <h2>Frontend Engineer</h2>
+        <h1>{pageTitle}</h1>
+		<h2>Reinaldo Henrique</h1>
+        <h3>Frontend Engineer</h2>
         <p>Hi, I'm Reinaldo Henrique from Brazil and I work as a Frontend Developer with Technologys like React, Next, Astro e more.</p>
         <a target="_blank" href="https://github.com/reinaldorm">Check out my github page</a>
         <a style="display: block;" href="/">First Page</a>
