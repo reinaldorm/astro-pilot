@@ -1,4 +1,6 @@
 ---
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
 import '../styles/global.css'
 
 const pageTitle = "Blog"
@@ -14,6 +16,7 @@ const pageTitle = "Blog"
 	</head>
 	<body>
 		<h1>Personal {pageTitle}</h1>
+        <Navigation />
         <p>Where I put all my thought in words.</p>
         <ul>
             <li>
@@ -31,7 +34,6 @@ const pageTitle = "Blog"
                 </ul>
             </li>
         </ul>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-	</body>
+        <Footer />
+    </body>
 </html>
