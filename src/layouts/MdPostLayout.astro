@@ -94,10 +94,6 @@ const pubDate =  new Intl.DateTimeFormat('en-US', {
         grid-column: 1 / 2;
     }
 
-    .post-content > p {
-        background-color: red;
-    }
-
     .post-info {
         grid-column: 2 / -1;
         position: sticky;
@@ -114,6 +110,16 @@ const pubDate =  new Intl.DateTimeFormat('en-US', {
         max-width: fit-content;
         margin-top: 2rem;
     }
+
+    @media screen and (max-width: 400px) {
+        .post {
+            display: block;
+        }
+
+        .post-content {
+            margin-bottom: 4rem;
+        }
+    }
 </style>
 
 <style is:global>
@@ -129,11 +135,15 @@ const pubDate =  new Intl.DateTimeFormat('en-US', {
         color: #fff;
     }
 
+    .post-content p img {
+        max-width: 100%;
+    }
+
     .post-content blockquote {
         display: flex;
         gap: 0.5rem;
         align-items: center;
-        background-color: #efefef;
+        background-color: #efefff;
         padding: 1rem;
         position: relative;
     }
