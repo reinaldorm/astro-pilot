@@ -1,5 +1,14 @@
 ---
 const pageTitle = "About me"
+
+const info = {
+  firstName: "Reinaldo",
+  country: "Brazil",
+  occupation: "Unemployed",
+  hobbies: ["Music Production", "Design", "Game"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
 ---
 
 <html lang="en">
@@ -12,9 +21,16 @@ const pageTitle = "About me"
 	</head>
 	<body>
         <h1>{pageTitle}</h1>
-		<h2>Reinaldo Henrique</h1>
-        <h3>Frontend Engineer</h2>
-        <p>Hi, I'm Reinaldo Henrique from Brazil and I work as a Frontend Developer with Technologys like React, Next, Astro e more.</p>
+		<h2>Hi, I'm {info.firstName}</h1>
+        <h3>I live in {info.country} and am currently {info.occupation}</h2>
+        <ul>
+            <li><h4>My skills are: </h4></li>
+            {skills.map(skill => <li>{skill}</li>)}
+        </ul>
+        <ul>
+            <li><h4>I have as hobbies: </h4></li>
+            {info.hobbies.map(hobbie => <li>{hobbie}</li>)}
+        </ul>
         <a target="_blank" href="https://github.com/reinaldorm">Check out my github page</a>
         <a style="display: block;" href="/">First Page</a>
     </body>
