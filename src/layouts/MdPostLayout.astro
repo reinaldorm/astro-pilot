@@ -1,0 +1,101 @@
+---
+import '../styles/global.css'
+
+const { frontmatter } = Astro.props;
+const pubDate =  new Intl.DateTimeFormat('en-US', {
+    dateStyle: 'long',
+}).format(new Date(frontmatter.pubDate))
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />            
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{frontmatter.title}</title>
+  </head>
+  <body>
+    <header class="header">
+        <div class="header-info">
+            <h1 class="header-title">{frontmatter.title}</h1>
+            <h2 class="header-description">{frontmatter.description}</h2>
+        </div>
+        <img src={frontmatter.image.url} alt={frontmatter.image.alt} class="header-img">
+    </header>
+    <div class="post">
+        <div class="post-content">
+            <slot   />
+        </div>
+        <div class="post-info">
+
+        </div>
+    </div>
+    <footer class="footer">
+        <a class="footer-link" href="/blog">
+            Go back to posts
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.1667 16.375L7 12M7 12L11.1667 7.625M7 12H17" stroke="#0085FF" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+    </footer>
+  </body>
+</html>
+
+
+<style>
+    .header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 7rem;
+    }
+
+    .header-title {
+        color: #111;
+        font-size: 2.25rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .header-description {
+        color: #7c7c7c;
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    .header-img {
+        max-width: 2rem;
+    }
+
+    .post {
+        display: grid;
+        grid-template-columns: 1fr 16rem;
+    }
+
+    .post-content {
+        grid-column: 1 / 2;
+    }
+
+    .post-info {
+        grid-column: 2 / -1;
+    }
+
+    .footer-link {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        text-decoration: none;
+        border-bottom: 1px solid #0085FF;
+        color: #0085FF;
+        max-width: fit-content;
+        margin-top: 2rem;
+    }
+</style>
+
+
+<script define:vars={{frontmatter}}>    
+    console.log(frontmatter)
+</script>
+
