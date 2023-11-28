@@ -1,0 +1,45 @@
+---
+const { head, sep } = Astro.props;
+---
+
+<div class="post-data">
+    <h4 class="data-head">{head}</h4>
+    <div class="data-body"><slot /></div>
+    {sep ? <span class="data-sep"></span> : ""}
+</div>
+
+<style>
+    .post-data:not(:last-child) {
+        margin-bottom: 1.5rem;
+    }
+
+    .post-data {
+        font-style: 1rem;
+        font-weight: 400;
+        line-height: 1.3rem;
+        color: #06121f;
+    }
+
+    .data-head {
+        font-style: 1rem;
+        font-weight: 400;
+        line-height: 1.3rem;
+        color: #06121f;
+        margin-bottom: 0.625rem;
+    }
+
+    .data-body {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.625rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .data-sep {
+        height: 0.25rem;
+        background-color: #eee;
+        display: block;
+    }
+
+    data
+</style>

@@ -1,4 +1,9 @@
 ---
+import PostData from '../components/post/PostData.astro';
+import PostTag from '../components/post/PostTag.astro';
+import  '@fontsource/inter/400.css'
+import  '@fontsource/inter/500.css'
+import  '@fontsource/inter/700.css'
 import '../styles/global.css'
 
 const { frontmatter } = Astro.props;
@@ -23,14 +28,23 @@ const pubDate =  new Intl.DateTimeFormat('en-US', {
         </div>
         <img src={frontmatter.image.url} alt={frontmatter.image.alt} class="header-img">
     </header>
-    <div class="post">
+    <main class="post">
         <div class="post-content">
-            <slot   />
+            <slot />
         </div>
         <div class="post-info">
-
+            <PostData sep={true} head="Posted">
+                <span style="color: #909090;">{pubDate}</span>
+            </PostData>
+            <PostData sep={true} head="Tags">
+                {frontmatter.tags.map((tag: string) => <PostTag name={tag} />)}
+            </PostData>
+            <PostData sep={false} head="Author">
+                {frontmatter.author}
+                <span style="color: #909090;">Frontend Developer</span>
+            </PostData>
         </div>
-    </div>
+    </main>
     <footer class="footer">
         <a class="footer-link" href="/blog">
             Go back to posts
@@ -71,15 +85,23 @@ const pubDate =  new Intl.DateTimeFormat('en-US', {
 
     .post {
         display: grid;
-        grid-template-columns: 1fr 16rem;
+        grid-template-columns: 1fr [content-start] 16rem [content-end];
+        gap: 4rem;
+        align-items: flex-start;
     }
 
     .post-content {
         grid-column: 1 / 2;
     }
 
+    .post-content > p {
+        background-color: red;
+    }
+
     .post-info {
         grid-column: 2 / -1;
+        position: sticky;
+        top: 5svh;
     }
 
     .footer-link {
@@ -91,6 +113,44 @@ const pubDate =  new Intl.DateTimeFormat('en-US', {
         color: #0085FF;
         max-width: fit-content;
         margin-top: 2rem;
+    }
+</style>
+
+<style is:global>
+    .post-content > *:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+
+    .post-content p code {
+        padding: 0.125rem 0.25rem;
+        display: inline-block;
+        border-radius: 0.125rem;
+        background-color: #333;
+        color: #fff;
+    }
+
+    .post-content blockquote {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        background-color: #efefef;
+        padding: 1rem;
+        position: relative;
+    }
+
+    .post-content blockquote::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        display: block;
+        height: 100%;
+        width: 0.25rem;
+        background-color: rgb(148, 36, 253);
+    }
+
+    .post-content pre {
+        padding: 1rem;
+        border-radius: 0.125rem;
     }
 </style>
 
