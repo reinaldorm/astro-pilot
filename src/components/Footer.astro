@@ -1,16 +1,45 @@
 ---
-import Social from './Social.astro'
 ---
 
-<footer>
-  <Social platform="instagram" username="reinaldohrm" />
-  <Social platform="github" username="reinaldorm" />
+<footer class="ftr">
+  <a href="/" class="ftr-link">Home</a>  
+  <a href="/about" class="ftr-link">About</a>  
+  <a href="/blog" class="ftr-link">Blog</a>  
 </footer>
 
 <style>
-  footer {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
+    .ftr {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .ftr-link {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        text-decoration: none;
+        border-bottom: 1px solid #0085FF;
+        color: #0085FF;
+        max-width: fit-content;
+        margin-top: 2rem;
+    }
+
+    .ftr-link.current {
+      opacity: 0.5;
+    }
 </style>
+
+<script>
+  const links = document.querySelectorAll(".ftr-link") as NodeListOf<HTMLAnchorElement>;
+  console.log(links)
+
+  links.forEach(link => {
+    const currentPage = location.pathname.includes(link.textContent!.toLowerCase());
+
+    if (currentPage) {
+      link.classList.add("current");
+    } else if (location.pathname === '/' && link.textContent!.toLowerCase() === "home") {
+      link.classList.add("current");
+    }
+  })
+</script>

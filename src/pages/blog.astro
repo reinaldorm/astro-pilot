@@ -4,21 +4,73 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const pageTitle = "Blog"
 ---
 <BaseLayout pageTitle={pageTitle}>
-    <p>Where I put all my thought in words.</p>
-    <ul>
-        <li>
-            <h3>Python</h3>
-            <ul>
-                <li>
+    <p class="page-description">Where I put all my thought in words.</p>
+    <ul class="post-list">
+        <li class="topic">
+            <h3 class="topic-title">Python</h3>
+            <ul class="topic-list">
+                <li class="post">
                     <a href="/posts/strings">Strings</a>
                 </li>
-                <li>
+                <li class="post">
                     <a href="/posts/dictionaries">Dictionaries</a>
                 </li>
-                <li>
+                <li class="post">
                     <a href="/posts/list">Lists</a>
+                </li>
+                <li class="post">
+                    <a href="/blog">Loops</a>
+                </li>
+                <li class="post">
+                    <a href="/blog">Conditionals</a>
+                </li>
+                <li class="post">
+                    <a href="/blog">List Comprehensions</a>
                 </li>
             </ul>
         </li>
     </ul>
 </BaseLayout>
+
+<style>
+    .page-description {
+        opacity: 0.75;
+        margin-bottom: 4rem;
+    }
+
+    .topic-title {
+        margin-bottom: 0.5rem;
+    }
+
+    .topic-list {
+        padding: 0rem 1rem;
+        position: relative;
+    }
+
+    .topic-list::before {
+        content: "";
+        display: block;
+        position: absolute;
+        height: 90%;
+        top: 50%;
+        translate: 0px -50% 0px;
+        width: 0.125rem;
+        background-color: #d2dfec;
+        left: 0.125rem;
+    }
+
+    .post a {
+        text-decoration: none;
+        /* border-bottom: 1px solid #0085FF40; */
+        color: #0085FF;
+        font-weight: 500;
+    }
+
+    .post:not(:last-child) {
+        margin-bottom: 0.25rem;
+    }
+
+    * {
+        list-style-type: none;
+    }
+</style>

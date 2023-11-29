@@ -12,15 +12,12 @@ const { pageTitle } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>{pageTitle}</title>
+    <title>{"Reinaldo - " + pageTitle}</title>
   </head>
   <body>
     <Header />
     <h1>{pageTitle}</h1>
     <slot   />
     <Footer />
-    <script>
-      import "../scripts/menu.js";
-    </script>
   </body>
 </html>
