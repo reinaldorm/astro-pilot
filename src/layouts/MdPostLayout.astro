@@ -30,7 +30,7 @@ const pubDate =  new Intl.DateTimeFormat('en-US', {
     </header>
     <main class="post">
         <div style={`background: url('${frontmatter.cover.replace('.jpg', '_fallback.jpg')}') center / cover;`} class="post-cover">
-            <img src={frontmatter.cover} alt={frontmatter.title}>
+            <img  src={frontmatter.cover} alt={frontmatter.title}>
         </div>
         <div class="post-content">
             <slot />
@@ -201,12 +201,84 @@ const pubDate =  new Intl.DateTimeFormat('en-US', {
     }
 
     .post-content pre {
+        position: relative;
         padding: 1rem;
         border-radius: 0.125rem;
+    }
+
+    .post-content pre .copy {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .post-content pre .copy:hover {
+        opacity: 0.75;
+    }
+
+    .post-content pre.copied::before {
+        content: "Copied!";
+        display: block;
+        position: absolute;
+        background-color: #00B553;
+        padding: 0.125rem 0.5rem;
+        border-radius: 0.25rem 0.25rem 0rem 0.25rem;
+        color: #fff;
+        font-family: system-ui, sans-serif;
+        top: 1rem;
+        right: 3rem;
+        animation: show-up 1s ease;
+        font-size: 0.75rem;
+        opacity: 0;
+    }
+
+    @keyframes show-up {
+        0% {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+
+        30%,
+        70% {
+            transform: translateY(0%);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
     }
 </style>
 
 
-<script define:vars={{frontmatter}}>    
+<script define:vars={{frontmatter}}>
+    const code_blocks = document.querySelectorAll("pre");
+
+    function handleCopy(text, block) {
+        navigator.clipboard.writeText(text)
+        
+        if (!block.className.includes("copied")) {
+            block.classList.add("copied")
+            setTimeout(() => block.classList.remove("copied"), 1250)
+        }
+    }
+
+    code_blocks.forEach(block => {
+        const copyButton = document.createElement("button");
+        const copyIcon = document.createElement("img")
+
+        copyIcon.src = "/assets/copy.svg"
+        copyIcon.alt = "copy-code"
+
+        copyButton.classList.add("copy")
+        copyButton.appendChild(copyIcon)
+        copyButton.addEventListener("click", () => handleCopy(block.textContent, block))
+
+        block.appendChild(copyButton)
+    })
 </script>
 

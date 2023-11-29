@@ -18,7 +18,7 @@ cover: /covers/strings_in_python.jpg
 
 We have in Python not only top-level functions to help us manipulate strings, but also methods from the **string class** that are also inherited by any other string inside the code as well as **string slicing** and other features.
 
-Also important to keep in mind is that **none** of the methods used to manipulate _strings_ will **essencialy mutate** the original value; instead, they will return us a new value that can be used further in the code.
+Also important to keep in mind is that **none** of the methods used to manipulate _strings_ will **essentially mutate** the original value; instead, they will return us a new value that can be used further in the code.
 
 > Strings in Python are **immutable** and will **always** return a **new value** rather than mutating the original value.
 
