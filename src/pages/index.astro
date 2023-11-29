@@ -15,12 +15,12 @@ const posts = await Astro.glob("../pages/posts/*.md")
 	</Headline>
 	<Headline headline="Repositories">
 		<ul class="grid grid-cols-2 gap-2.5">
-			{repos.map((repo: object) => <Project repo={repo} />)}
+			{repos.map((repo) => <Project repo={repo} />)}
 		</ul>
 	</Headline>
 	<Headline headline="Blog"> 
 		<ul>
-			{posts.map(({url, frontmatter}: object) => <Post url={url} description={frontmatter.description} title={frontmatter.title} />)}
+			{posts.map(({ url, frontmatter }) => <Post url={url} description={frontmatter.description} title={frontmatter.title} />)}
 		</ul>
 	</Headline>
 </BaseLayout>
