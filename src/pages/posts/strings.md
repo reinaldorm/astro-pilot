@@ -1,9 +1,9 @@
 ---
 layout: ../../layouts/MdPostLayout.astro
 title: Strings In Python
-pubDate: 11/28/2003
 description: The way Strings are seen in Python.
 author: Reinaldo Henrique
+pubDate: 2023-11-29
 image:
   url: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/640px-Python-logo-notext.svg.png
   alt: Python Logo
@@ -11,10 +11,9 @@ tags:
   - astro
   - blogging
   - learning
-cover: /covers/strings_in_python.jpg
 ---
 
-### Strings
+## Strings
 
 We have in Python not only top-level functions to help us manipulate strings, but also methods from the **string class** that are also inherited by any other string inside the code as well as **string slicing** and other features.
 

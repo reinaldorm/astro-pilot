@@ -1,8 +1,26 @@
 ---
+import Headline from '../components/Headline.astro';
+import Project from '../components/Project.astro';
+import Post from '../components/Post.astro';
 import BaseLayout from '../layouts/BaseLayout.astro'
-
-const pageTitle = "Home"
+const repos = await fetch("https://api.github.com/users/reinaldorm/repos").then(res => res.json())
+const posts = await Astro.glob("../pages/posts/*.md")
 ---
-<BaseLayout pageTitle={pageTitle}>
-	<h2>Layout Example</h2>
+
+<BaseLayout>
+	<Headline headline="Hi, Reinaldo here!" big>
+		<p class="text-gray-800 text-base">
+			Looks like you've just stumbled on my humble, not finished yet wonderful personal website and, since you're here (for whatever the reason) why not to take a look? You'll see some projects I've made and things I've written throughout my yet not started Frontend Developer Career.
+		</p>		
+	</Headline>
+	<Headline headline="Repositories">
+		<ul class="grid grid-cols-2 gap-2.5">
+			{repos.map((repo: object) => <Project repo={repo} />)}
+		</ul>
+	</Headline>
+	<Headline headline="Blog"> 
+		<ul>
+			{posts.map(({url, frontmatter}: object) => <Post url={url} description={frontmatter.description} title={frontmatter.title} />)}
+		</ul>
+	</Headline>
 </BaseLayout>

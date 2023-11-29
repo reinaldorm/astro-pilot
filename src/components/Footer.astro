@@ -2,9 +2,7 @@
 ---
 
 <footer class="ftr">
-  <a href="/" class="ftr-link">Home</a>  
-  <a href="/about" class="ftr-link">About</a>  
-  <a href="/blog" class="ftr-link">Blog</a>  
+  <a href="mailto:reinaldohrm@gmail.com" class="ftr-link">Contact Me</a>  
 </footer>
 
 <style>
@@ -28,18 +26,3 @@
       opacity: 0.5;
     }
 </style>
-
-<script>
-  const links = document.querySelectorAll(".ftr-link") as NodeListOf<HTMLAnchorElement>;
-  console.log(links)
-
-  links.forEach(link => {
-    const currentPage = location.pathname.includes(link.textContent!.toLowerCase());
-
-    if (currentPage) {
-      link.classList.add("current");
-    } else if (location.pathname === '/' && link.textContent!.toLowerCase() === "home") {
-      link.classList.add("current");
-    }
-  })
-</script>

@@ -29,9 +29,6 @@ const pubDate =  new Intl.DateTimeFormat('en-US', {
         <img src={frontmatter.image.url} alt={frontmatter.image.alt} class="header-img">
     </header>
     <main class="post">
-        <div style={`background: url('${frontmatter.cover.replace('.jpg', '_fallback.jpg')}') center / cover;`} class="post-cover">
-            <img  src={frontmatter.cover} alt={frontmatter.title}>
-        </div>
         <div class="post-content">
             <slot />
         </div>
@@ -49,8 +46,8 @@ const pubDate =  new Intl.DateTimeFormat('en-US', {
         </div>
     </main>
     <footer class="footer">
-        <a class="footer-link" href="/blog">
-            Go back to posts
+        <a class="footer-link" href="/">
+            Go back to home
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11.1667 16.375L7 12M7 12L11.1667 7.625M7 12H17" stroke="#0085FF" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -92,19 +89,6 @@ const pubDate =  new Intl.DateTimeFormat('en-US', {
         grid-template-row: auto auto;
         gap: 0rem 4rem;
         align-items: flex-start;
-    }
-
-    .post-cover {
-        grid-column: 1 / -1;
-        grid-row: 1 / 2;
-        margin-bottom: 2rem;
-    }
-
-    .post-cover img {
-        width: 100%;
-        height: 20rem;
-        object-fit: cover;
-        animation: image_load 1s ease 0s 1 normal both;
     }
 
     .post-content {
@@ -152,10 +136,6 @@ const pubDate =  new Intl.DateTimeFormat('en-US', {
 
         .post {
             display: block;
-        }
-
-        .post-cover img {
-        height: 10rem;
         }
 
         .post-content {
@@ -255,10 +235,10 @@ const pubDate =  new Intl.DateTimeFormat('en-US', {
 </style>
 
 
-<script define:vars={{frontmatter}}>
+<script>
     const code_blocks = document.querySelectorAll("pre");
 
-    function handleCopy(text, block) {
+    function handleCopy(text: string, block: HTMLElement) {
         navigator.clipboard.writeText(text)
         
         if (!block.className.includes("copied")) {
@@ -276,9 +256,9 @@ const pubDate =  new Intl.DateTimeFormat('en-US', {
 
         copyButton.classList.add("copy")
         copyButton.appendChild(copyIcon)
-        copyButton.addEventListener("click", () => handleCopy(block.textContent, block))
+        copyButton.addEventListener("click", () => handleCopy(block.textContent!, block))
 
         block.appendChild(copyButton)
     })
-</script>
 
+</script>

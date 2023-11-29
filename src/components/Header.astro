@@ -1,7 +1,12 @@
 ---
-import Navigation from './Navigation.astro'
 ---
 
-<header>
-    <Navigation />
+<header class="flex justify-between items-center mb-16">
+    <button class="cursor-pointer">
+        <img src="/logo.svg" alt="personal-logo-a-weird-R">
+    </button>
+    <nav class="flex gap-x-4 items-center">
+        <a class="hover:text-primary-500 hover:underline" target="_blank" href="/">LinkedIn</a>
+        <a class="hover:text-primary-500 hover:underline" target="_blank" href="https://www.github.com/reinaldorm">Github</a>
+    </nav>
 </header>
