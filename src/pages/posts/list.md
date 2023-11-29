@@ -11,6 +11,7 @@ tags:
   - vector
   - list
   - array
+cover: /
 ---
 Lists are just the Python's implementation of what you might know as Array or Vector.
 

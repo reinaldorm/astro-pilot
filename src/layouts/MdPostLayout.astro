@@ -29,17 +29,20 @@ const pubDate =  new Intl.DateTimeFormat('en-US', {
         <img src={frontmatter.image.url} alt={frontmatter.image.alt} class="header-img">
     </header>
     <main class="post">
+        <div style={`background: url('${frontmatter.cover.replace('.jpg', '_fallback.jpg')}') center / cover;`} class="post-cover">
+            <img src={frontmatter.cover} alt={frontmatter.title}>
+        </div>
         <div class="post-content">
             <slot />
         </div>
         <div class="post-info">
-            <PostData sep={true} head="Posted">
+            <PostData sep={true} iconURL="/assets/calendar.svg" head="Posted">
                 <span style="color: #909090;">{pubDate}</span>
             </PostData>
-            <PostData sep={true} head="Tags">
+            <PostData sep={true} iconURL="/assets/tag.svg" head="Tags">
                 {frontmatter.tags.map((tag: string) => <PostTag name={tag} />)}
             </PostData>
-            <PostData sep={false} head="Author">
+            <PostData sep={false} iconURL="/assets/pen.svg" head="Author">
                 {frontmatter.author}
                 <span style="color: #909090;">Frontend Developer</span>
             </PostData>
@@ -63,7 +66,7 @@ const pubDate =  new Intl.DateTimeFormat('en-US', {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 7rem;
+        margin-bottom: 2rem;
     }
 
     .header-title {
@@ -86,8 +89,22 @@ const pubDate =  new Intl.DateTimeFormat('en-US', {
     .post {
         display: grid;
         grid-template-columns: 1fr [content-start] 16rem [content-end];
-        gap: 4rem;
+        grid-template-row: auto auto;
+        gap: 0rem 4rem;
         align-items: flex-start;
+    }
+
+    .post-cover {
+        grid-column: 1 / -1;
+        grid-row: 1 / 2;
+        margin-bottom: 2rem;
+    }
+
+    .post-cover img {
+        width: 100%;
+        height: 20rem;
+        object-fit: cover;
+        animation: image_load 1s ease 0s 1 normal both;
     }
 
     .post-content {
@@ -111,9 +128,34 @@ const pubDate =  new Intl.DateTimeFormat('en-US', {
         margin-top: 2rem;
     }
 
-    @media screen and (max-width: 400px) {
+    @keyframes image_load {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @media screen and (max-width: 640px) {
+        .header-title {
+            font-size: 1.5rem;
+        }
+
+        .header-description {
+        }
+
+        .header-img {
+           max-width: 1.5rem;
+        }
+
         .post {
             display: block;
+        }
+
+        .post-cover img {
+        height: 10rem;
         }
 
         .post-content {
@@ -166,6 +208,5 @@ const pubDate =  new Intl.DateTimeFormat('en-US', {
 
 
 <script define:vars={{frontmatter}}>    
-    console.log(frontmatter)
 </script>
 

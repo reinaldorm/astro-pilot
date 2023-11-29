@@ -11,8 +11,7 @@ tags:
   - astro
   - blogging
   - learning
-  - in
-  - public
+cover: /covers/strings_in_python.jpg
 ---
 
 ### Strings

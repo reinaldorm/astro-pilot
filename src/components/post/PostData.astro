@@ -1,9 +1,12 @@
 ---
-const { head, sep } = Astro.props;
+const { head, iconURL, sep } = Astro.props;
 ---
 
 <div class="post-data">
-    <h4 class="data-head">{head}</h4>
+    <div class="data-head">
+        <h4 class="head-title">{head}</h4>
+        <img src={iconURL} alt={head}>
+    </div>
     <div class="data-body"><slot /></div>
     {sep ? <span class="data-sep"></span> : ""}
 </div>
@@ -21,6 +24,12 @@ const { head, sep } = Astro.props;
     }
 
     .data-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .head-title {
         font-style: 1rem;
         font-weight: 400;
         line-height: 1.3rem;
@@ -40,6 +49,4 @@ const { head, sep } = Astro.props;
         background-color: #eee;
         display: block;
     }
-
-    data
 </style>
