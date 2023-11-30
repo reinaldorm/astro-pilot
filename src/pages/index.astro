@@ -3,7 +3,7 @@ import Headline from '@components/generic/Headline.astro';
 import Project from '@components/Project.astro';
 import Post from '@components/Post.astro';
 import BaseLayout from '@layouts/BaseLayout.astro'
-// const repos = await fetch("https://api.github.com/users/reinaldorm/repos").then(res => res.json())
+const repos = await fetch("https://api.github.com/users/reinaldorm/repos").then(res => res.json())
 const posts = await Astro.glob('./posts/*.mdx')
 ---
 
