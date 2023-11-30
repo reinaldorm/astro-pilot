@@ -15,7 +15,7 @@ const posts = await Astro.glob('./posts/*.mdx')
 	</Headline>
 	<Headline headline="Repositories">
 		<ul class="grid grid-cols-2 gap-2.5 max-sm:grid-cols-1">
-			<!-- {repos.map((repo: object) => <Project repo={repo} />)} -->
+			{repos.map((repo: object) => <Project repo={repo} />)}
 		</ul>
 	</Headline>
 	<Headline headline="Blog"> 
