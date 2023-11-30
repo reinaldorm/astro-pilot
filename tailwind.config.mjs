@@ -14,6 +14,9 @@ export default {
 				"primary-800": "#001642",
 				"primary-900": "#000C2B",
 			},
+			gridTemplateColumns: {
+				content: "1fr [content-start] 16rem [content-end];",
+			},
 		},
 	},
 	plugins: [],

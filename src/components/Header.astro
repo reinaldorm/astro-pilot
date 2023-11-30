@@ -1,4 +1,5 @@
 ---
+import Link from "@components/generic/Link.astro";
 ---
 
 <header class="flex justify-between items-center mb-16">
@@ -6,7 +7,7 @@
         <img src="/logo.svg" alt="personal-logo-a-weird-R">
     </button>
     <nav class="flex gap-x-4 items-center">
-        <a class="hover:text-primary-500 hover:underline" target="_blank" href="/">LinkedIn</a>
-        <a class="hover:text-primary-500 hover:underline" target="_blank" href="https://www.github.com/reinaldorm">Github</a>
+        <Link newTab href="/">LinkedIn</Link>
+        <Link newTab href="https://www.github.com/reinaldorm">Github</Link>
     </nav>
 </header>

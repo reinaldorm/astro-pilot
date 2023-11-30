@@ -1,28 +1,7 @@
 ---
+import Link from "@components/generic/Link.astro";
 ---
 
-<footer class="ftr">
-  <a href="mailto:reinaldohrm@gmail.com" class="ftr-link">Contact Me</a>  
+<footer class="mt-8">
+  <Link href="mailto:reinaldohrm@gmail.com">Contact Me</Link>  
 </footer>
-
-<style>
-    .ftr {
-      display: flex;
-      gap: 1rem;
-    }
-
-    .ftr-link {
-        display: flex;
-        align-items: center;
-        gap: 0.25rem;
-        text-decoration: none;
-        border-bottom: 1px solid #0085FF;
-        color: #0085FF;
-        max-width: fit-content;
-        margin-top: 2rem;
-    }
-
-    .ftr-link.current {
-      opacity: 0.5;
-    }
-</style>

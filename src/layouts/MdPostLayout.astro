@@ -21,18 +21,18 @@ const pubDate =  new Intl.DateTimeFormat('en-US', {
     <title>{frontmatter.title}</title>
   </head>
   <body>
-    <header class="header">
-        <div class="header-info">
-            <h1 class="header-title">{frontmatter.title}</h1>
-            <h2 class="header-description">{frontmatter.description}</h2>
+    <header class="flex justify-between items-center mb-16">
+        <div>
+            <h1 class="text-gray-900 text-4xl font-bold mb-2 max-sm:text-2xl">{frontmatter.title}</h1>
+            <h2 class="text-gray-500">{frontmatter.description}</h2>
         </div>
-        <img src={frontmatter.image.url} alt={frontmatter.image.alt} class="header-img">
+        <img src={frontmatter.image.url} alt={frontmatter.image.alt} class="w-8 max-sm:w-6">
     </header>
-    <main class="post">
-        <div class="post-content">
+    <main class="grid grid-cols-content max-sm:block items-start gap-x-16">
+        <div class="post-content col-[1/2] max-sm:mb-6">
             <slot />
         </div>
-        <div class="post-info">
+        <div class="col-[2/-1] sticky top-[5svh]">
             <PostData sep={true} iconURL="/assets/calendar.svg" head="Posted">
                 <span style="color: #909090;">{pubDate}</span>
             </PostData>
@@ -45,8 +45,8 @@ const pubDate =  new Intl.DateTimeFormat('en-US', {
             </PostData>
         </div>
     </main>
-    <footer class="footer">
-        <a class="footer-link" href="/">
+    <footer class="mt-8">
+        <a href="/" class="text-primary-400 underline flex gap-x-1 items-center">
             Go back to home
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M11.1667 16.375L7 12M7 12L11.1667 7.625M7 12H17" stroke="#0085FF" stroke-linecap="round" stroke-linejoin="round"/>
@@ -56,105 +56,18 @@ const pubDate =  new Intl.DateTimeFormat('en-US', {
   </body>
 </html>
 
-
-<style>
-    .header {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 2rem;
-    }
-
-    .header-title {
-        color: #111;
-        font-size: 2.25rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-    }
-
-    .header-description {
-        color: #7c7c7c;
-        font-size: 1rem;
-        font-weight: 400;
-    }
-
-    .header-img {
-        max-width: 2rem;
-    }
-
-    .post {
-        display: grid;
-        grid-template-columns: 1fr [content-start] 16rem [content-end];
-        grid-template-row: auto auto;
-        gap: 0rem 4rem;
-        align-items: flex-start;
-    }
-
-    .post-content {
-        grid-column: 1 / 2;
-    }
-
-    .post-info {
-        grid-column: 2 / -1;
-        position: sticky;
-        top: 5svh;
-    }
-
-    .footer-link {
-        display: flex;
-        align-items: center;
-        gap: 0.25rem;
-        text-decoration: none;
-        border-bottom: 1px solid #0085FF;
-        color: #0085FF;
-        max-width: fit-content;
-        margin-top: 2rem;
-    }
-
-    @keyframes image_load {
-        from {
-            opacity: 0;
-        }
-
-        to {
-            opacity: 1;
-        }
-    }
-
-    @media screen and (max-width: 640px) {
-        .header-title {
-            font-size: 1.5rem;
-        }
-
-        .header-description {
-        }
-
-        .header-img {
-           max-width: 1.5rem;
-        }
-
-        .post {
-            display: block;
-        }
-
-        .post-content {
-            margin-bottom: 4rem;
-        }
-    }
-</style>
-
 <style is:global>
     .post-content > *:not(:last-child) {
         margin-bottom: 1rem;
     }
 
     .post-content p code {
-        padding: 0.125rem 0.25rem;
+        padding-inline: 0.25rem;
         display: inline-block;
         border-radius: 0.125rem;
         background-color: #333;
         color: #fff;
+        font-size: 0.875rem;
     }
 
     .post-content p img {
@@ -240,7 +153,6 @@ const pubDate =  new Intl.DateTimeFormat('en-US', {
         }
     }
 </style>
-
 
 <script>
     const code_blocks = document.querySelectorAll("pre");

@@ -1,8 +1,10 @@
 ---
-const {repo} = Astro.props;
+import Link from "@components/generic/Link.astro";
+
+const { repo } = Astro.props;
 ---
 
 <li class="py-4 px-6 rounded border border-gray-300">
-    <a class="text-lg text-gray-900 hover:text-primary-400 hover:underline" href={repo.html_url} target="_blank">{repo.name.toLowerCase()}</a>
+    <Link href={repo.html_url}>{repo.name.toLowerCase()}</Link>
     <p class="text-sm mt-2.5 text-gray-600">{repo.description ? repo.description : "Go check it"}</p>
 </li>

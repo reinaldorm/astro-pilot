@@ -1,8 +1,10 @@
 ---
+import Link from "@components/generic/Link.astro";
+
 const { title, description, url } = Astro.props;
 ---
 
 <li class="mb-4">
-    <a href={url} class="text-gray-900 mb-1 hover:text-primary-500 hover:underline">{title}</a>
+    <Link href={url}>{title}</Link>
     <p class="text-gray-600 text-sm">{description}</p>
 </li>

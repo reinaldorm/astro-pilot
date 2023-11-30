@@ -1,10 +1,10 @@
 ---
-import Headline from '../components/Headline.astro';
-import Project from '../components/Project.astro';
-import Post from '../components/Post.astro';
-import BaseLayout from '../layouts/BaseLayout.astro'
-const repos = await fetch("https://api.github.com/users/reinaldorm/repos").then(res => res.json())
-const posts = await Astro.glob("../pages/posts/*.mdx")
+import Headline from '@components/generic/Headline.astro';
+import Project from '@components/Project.astro';
+import Post from '@components/Post.astro';
+import BaseLayout from '@layouts/BaseLayout.astro'
+// const repos = await fetch("https://api.github.com/users/reinaldorm/repos").then(res => res.json())
+const posts = await Astro.glob('./posts/*.mdx')
 ---
 
 <BaseLayout>
@@ -15,7 +15,7 @@ const posts = await Astro.glob("../pages/posts/*.mdx")
 	</Headline>
 	<Headline headline="Repositories">
 		<ul class="grid grid-cols-2 gap-2.5 max-sm:grid-cols-1">
-			{repos.map((repo: object) => <Project repo={repo} />)}
+			<!-- {repos.map((repo: object) => <Project repo={repo} />)} -->
 		</ul>
 	</Headline>
 	<Headline headline="Blog"> 
@@ -23,5 +23,4 @@ const posts = await Astro.glob("../pages/posts/*.mdx")
 			{posts.map(({ url, frontmatter }) => <Post url={url} description={frontmatter.description} title={frontmatter.title} />)}
 		</ul>
 	</Headline>
-	<a href="/posts/mdx" class="text-primary-500">A simple button (?) to do magic things...</a>
 </BaseLayout>
