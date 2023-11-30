@@ -4,7 +4,7 @@ import Project from '../components/Project.astro';
 import Post from '../components/Post.astro';
 import BaseLayout from '../layouts/BaseLayout.astro'
 const repos = await fetch("https://api.github.com/users/reinaldorm/repos").then(res => res.json())
-const posts = await Astro.glob("../pages/posts/*.md")
+const posts = await Astro.glob("../pages/posts/*.mdx")
 ---
 
 <BaseLayout>
@@ -14,7 +14,7 @@ const posts = await Astro.glob("../pages/posts/*.md")
 		</p>		
 	</Headline>
 	<Headline headline="Repositories">
-		<ul class="grid grid-cols-2 gap-2.5">
+		<ul class="grid grid-cols-2 gap-2.5 max-sm:grid-cols-1">
 			{repos.map((repo: object) => <Project repo={repo} />)}
 		</ul>
 	</Headline>
@@ -23,4 +23,5 @@ const posts = await Astro.glob("../pages/posts/*.md")
 			{posts.map(({ url, frontmatter }) => <Post url={url} description={frontmatter.description} title={frontmatter.title} />)}
 		</ul>
 	</Headline>
+	<a href="/posts/mdx" class="text-primary-500">A simple button (?) to do magic things...</a>
 </BaseLayout>

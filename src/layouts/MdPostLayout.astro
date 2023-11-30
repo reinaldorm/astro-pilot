@@ -9,7 +9,7 @@ import '../styles/global.css'
 const { frontmatter } = Astro.props;
 const pubDate =  new Intl.DateTimeFormat('en-US', {
     dateStyle: 'long',
-}).format(new Date(frontmatter.pubDate))
+}).format(new Date(frontmatter.date))
 ---
 
 <html lang="en">
@@ -232,6 +232,13 @@ const pubDate =  new Intl.DateTimeFormat('en-US', {
             opacity: 0;
         }
     }
+
+    @media screen and (max-width: 640px) {
+        .post-content pre *,
+        .post-content code {
+            font-size: 0.75rem;
+        }
+    }
 </style>
 
 
@@ -240,7 +247,7 @@ const pubDate =  new Intl.DateTimeFormat('en-US', {
 
     function handleCopy(text: string, block: HTMLElement) {
         navigator.clipboard.writeText(text)
-        
+
         if (!block.className.includes("copied")) {
             block.classList.add("copied")
             setTimeout(() => block.classList.remove("copied"), 1250)
@@ -257,6 +264,7 @@ const pubDate =  new Intl.DateTimeFormat('en-US', {
         copyButton.classList.add("copy")
         copyButton.appendChild(copyIcon)
         copyButton.addEventListener("click", () => handleCopy(block.textContent!, block))
+        copyButton.addEventListener("touchend", () => handleCopy(block.textContent!, block))
 
         block.appendChild(copyButton)
     })
