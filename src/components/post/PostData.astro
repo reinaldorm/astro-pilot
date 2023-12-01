@@ -1,52 +1,21 @@
 ---
-const { head, iconURL, sep } = Astro.props;
+interface Props {
+    head: string;
+    iconURL: string;
+    sep?: boolean;
+    flex?: boolean;
+}
+
+const { head, iconURL, sep, flex } = Astro.props;
 ---
 
-<div class="post-data">
-    <div class="data-head">
-        <h4 class="head-title">{head}</h4>
+<div class="mb-6 max-sm:mb-2 last:mb-0">
+    <div class="flex items-center justify-between">
+        <h4 class="leading-[1.3] text-gray-900 mb-3">{head}</h4>
         <img src={iconURL} alt={head}>
     </div>
-    <div class="data-body"><slot /></div>
-    {sep ? <span class="data-sep"></span> : ""}
+    <div class={`${flex ? "flex flex-wrap gap-3" : "block"} mb-6`}>
+        <slot />
+    </div>
+    {sep ? <span class="h-1 bg-slate-100 block"></span> : ""}
 </div>
-
-<style>
-    .post-data:not(:last-child) {
-        margin-bottom: 1.5rem;
-    }
-
-    .post-data {
-        font-style: 1rem;
-        font-weight: 400;
-        line-height: 1.3rem;
-        color: #06121f;
-    }
-
-    .data-head {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .head-title {
-        font-style: 1rem;
-        font-weight: 400;
-        line-height: 1.3rem;
-        color: #06121f;
-        margin-bottom: 0.625rem;
-    }
-
-    .data-body {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.625rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .data-sep {
-        height: 0.25rem;
-        background-color: #eee;
-        display: block;
-    }
-</style>

@@ -1,10 +1,14 @@
 ---
 import Link from "@components/generic/Link.astro";
 
+interface Props {
+    repo: Repo;
+}
+
 const { repo } = Astro.props;
 ---
 
 <li class="py-4 px-6 rounded border border-gray-300">
     <Link href={repo.html_url}>{repo.name.toLowerCase()}</Link>
-    <p class="text-sm mt-2.5 text-gray-600">{repo.description ? repo.description : "Go check it"}</p>
+    <p class="text-sm mt-2.5 text-gray-600">{repo.description}</p>
 </li>

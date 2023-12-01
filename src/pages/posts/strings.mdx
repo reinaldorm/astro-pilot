@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/MdPostLayout.astro
+layout: ../../layouts/PostLayout.astro
 title: Strings In Python
 description: The way Strings are seen in Python.
 author: Reinaldo Henrique
@@ -17,7 +17,7 @@ import Link from "@components/generic/Link.astro";
 
 export const components = { a: Link };
 
-## Strings
+### Strings
 
 We have in Python not only top-level functions to help us manipulate strings, but also methods from the **string class** that are also inherited by any other string inside the code as well as **string slicing** and other features.
 
@@ -25,11 +25,11 @@ Also important to keep in mind is that **none** of the methods used to manipulat
 
 > Strings in Python are **immutable** and will **always** return a **new value** rather than mutating the original value.
 
-### String features
+#### String features
 
 > Before diving into string methods and its properties is worth taking a look at what is possible to do with strings other than manipulate it with functions.
 
-#### String Slicing
+##### String Slicing
 
 It's possible to pass a index inside brackets after strings, just like in lists, to return a substrings that represents the respective character of the string at that index.
 
@@ -62,11 +62,11 @@ However, the right side of the brackets will actually say where the **slicing** 
 
 ![Python String Example](/assets/strings-asset-1.svg "Python")
 
-##### What if we put _negative numbers_ inside the brackets?
+> What if we put _negative numbers_ inside the brackets?
 
 If _just_ one negative number is passed inside the brackets the slicing will then start **backwards**, towards the start of the string where `-1` represents the **last character**, `-2` the **next-to-last** and so on.
 
-### find()
+##### find()
 
 The method `find()` allows us to find the index of a matched substring inside strings that we pass as a parameter inside the function.
 
@@ -78,7 +78,7 @@ has_welcome = title.find('Welcome')
 
 The variable `has_welcome` will receive _zero_ as it's value because `find()` will either return the index of the _first character of our substring_ parameter within the string if it occurs or -1 if the former case were not satisfied.
 
-### replace()
+##### replace()
 
 This method will replace matched occurrences (if there are any) within strings and return a new value containing the original string and the replacements were made.
 
@@ -92,7 +92,7 @@ Our variable `replace_welcome` will receive the value `Be welcome to our website
 
 > Notice that `replace()` is also case sensitive and will produce different outcomes based on minimal details within the string.
 
-### len()
+##### len()
 
 Will return the total **length** of the string as a _integer_ and the integer 0 if the string is empty.
 

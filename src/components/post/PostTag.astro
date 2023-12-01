@@ -1,18 +1,11 @@
 ---
+interface Props {
+    name: string;
+}
+
 const { name } = Astro.props;
 ---
 
-<div class="tag">
+<span class="block py-1 px-3 rounded bg-gray-200 text-gray-900 text-sm capitalize">
     {name}
-</div>
-
-<style>
-    .tag {
-        padding: 0.25rem 0.75rem;
-        border-radius: 0.25rem;
-        background-color: #ECECEC;
-        color: #101010;
-        font-size: 0.875rem;
-        text-transform: capitalize;
-    }
-</style>
+</span>

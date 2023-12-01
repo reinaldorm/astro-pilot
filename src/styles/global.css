@@ -11,12 +11,13 @@ html {
 
 body {
 	margin: 0 auto;
-	width: 100%;
 	max-width: 100ch;
-	padding: 4rem 1rem;
+	padding: 3rem 1rem;
 	line-height: 1.5;
 }
 
-h1 {
-	font-size: 2.5rem;
+@media screen and (max-width: 640px) {
+	body {
+		padding: 1rem;
+	}
 }

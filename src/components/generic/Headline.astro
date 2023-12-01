@@ -1,7 +1,12 @@
 ---
+interface Props {
+    headline: string;
+    big?: boolean;
+}
+
 const { headline, big } = Astro.props;
 ---
 <div class="mb-12">
-    <h1 class={`text-gray-800 ${big ? "text-3xl" : "text-2xl"} font-medium mb-4`}>{headline}</h1>
+    <h2 class={`text-gray-800 ${big ? "text-3xl" : "text-2xl"} font-medium mb-4`}>{headline}</h2>
     <slot />
 </div>

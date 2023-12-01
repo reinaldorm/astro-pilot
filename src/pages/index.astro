@@ -1,10 +1,11 @@
 ---
 import Headline from '@components/generic/Headline.astro';
-import Project from '@components/Project.astro';
-import Post from '@components/Post.astro';
-import BaseLayout from '@layouts/BaseLayout.astro'
-const repos = await fetch("https://api.github.com/users/reinaldorm/repos").then(res => res.json())
-const posts = await Astro.glob('./posts/*.mdx')
+import Project from '@components/generic/Project.astro';
+import PostLink from '@components/post/PostLink.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+const repos = await fetch("https://api.github.com/users/reinaldorm/repos").then(res => res.json()) as Repo[];
+const posts = await Astro.glob('./posts/*.mdx');
 ---
 
 <BaseLayout>
@@ -15,12 +16,12 @@ const posts = await Astro.glob('./posts/*.mdx')
 	</Headline>
 	<Headline headline="Repositories">
 		<ul class="grid grid-cols-2 gap-2.5 max-sm:grid-cols-1">
-			{repos.map((repo: object) => <Project repo={repo} />)}
+			{repos.map((repo) => <Project repo={repo!} />)}
 		</ul>
 	</Headline>
 	<Headline headline="Blog"> 
 		<ul>
-			{posts.map(({ url, frontmatter }) => <Post url={url} description={frontmatter.description} title={frontmatter.title} />)}
+			{posts.map(({ url, frontmatter }) => <PostLink url={url!} description={frontmatter.description} title={frontmatter.title} />)}
 		</ul>
 	</Headline>
 </BaseLayout>
