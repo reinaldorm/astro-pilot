@@ -5,7 +5,7 @@ description: First impressions using Astro framework.
 author: Reinaldo Henrique
 date: 2023-12-01
 image:
-  url: https://astro.build/assets/press/astro-icon-light-gradient.svg
+  url: https://astro.build/assets/press/astro-logo-dark.svg
   alt: astro-logo
 tags:
   - Astro
