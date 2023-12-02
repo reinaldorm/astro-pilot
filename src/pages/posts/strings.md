@@ -13,10 +13,6 @@ tags:
   - learning
 ---
 
-import Link from "@components/generic/Link.astro";
-
-export const components = { a: Link };
-
 ### Strings
 
 We have in Python not only top-level functions to help us manipulate strings, but also methods from the **string class** that are also inherited by any other string inside the code as well as **string slicing** and other features.

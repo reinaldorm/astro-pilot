@@ -1,12 +1,15 @@
 ---
-interface Props {
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'a'> {
     href: string;
     newTab?: boolean;
+    active?: boolean;
 }
 
-const { href, newTab } = Astro.props;
+const { href, newTab, active } = Astro.props;
 ---
 
-<a target={newTab ? '_blank' : '_self'} href={href} class="text-lg text-gray-900 hover:text-primary-400 hover:underline flex gap-x1 items-center">
+<a target={newTab ? '_blank' : '_self'} href={href} class={`text-lg text-gray-900 ${active ? "text-primary-400" : "hover:text-primary-400"} hover:underline gap-x1 items-center inline-block`}>
     <slot />
 </a>

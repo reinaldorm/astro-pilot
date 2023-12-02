@@ -1,10 +1,11 @@
 ---
 import Headline from '@components/generic/Headline.astro';
+import Link from '@components/generic/Link.astro';
 import Project from '@components/generic/Project.astro';
 import PostLink from '@components/post/PostLink.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
 
-const repos = await fetch("https://api.github.com/users/reinaldorm/repos").then(res => res.json()) as Repo[];
+// const repos = await fetch("https://api.github.com/users/reinaldorm/repos").then(res => res.json()) as Repo[];
 const posts = await Astro.glob('./posts/*.md');
 ---
 
@@ -14,12 +15,12 @@ const posts = await Astro.glob('./posts/*.md');
 			That's an almost full static website made out using the Astro framework. The only JavaScript that it contains is on the post page that lets people copy the code snippets from the <code>pre</code> tag, besides that, once it's built the website is script free, so to say.
 		</p>
 		<p class="text-gray-800 text-base">
-			You can check the repository <a href="https://github.com/reinaldorm/astro-pilot">here</a> and follow the <a href="https://docs.astro.build/en/getting-started/">guide</a> Astro provided to make your own blog using the framework. Note that if your goal is to achieve this same website, Astro's guide might lead you to a different result though it may look similar.
+			You can check the repository <Link newTab href="https://github.com/reinaldorm/astro-pilot">here</Link> and follow the <Link newTab href="https://docs.astro.build/en/getting-started/">guide</Link> Astro provided to make your own blog using the framework. Note that if your goal is to achieve this same website, Astro's guide might lead you to a different result though it may look similar.
 		</p>	
 	</Headline>
 	<Headline headline="Repositories">
 		<ul class="grid grid-cols-2 gap-2.5 max-sm:grid-cols-1">
-			{repos.map((repo) => <Project repo={repo!} />)}
+			<!-- {repos.map((repo) => <Project repo={repo!} />)} -->
 		</ul>
 	</Headline>
 	<Headline headline="Blog"> 
