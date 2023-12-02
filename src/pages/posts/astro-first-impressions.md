@@ -13,7 +13,7 @@ tags:
   - Framework
 ---
 
-> Hey, this is **still** a draft, one that I hope I'll finish writing some day. I encourage reading some of the others posts I have that are already completed right here but if you want to read it anyway, have at it.
+> Hey, this is **still** a draft, one that I hope I'll finish writing some day. I encourage you to read one of the other posts I have that are already completed [here](https://astro-pilot.netlify.app/) but, if you want to read it anyway, feel free to do so.
 
 ---
 
